@@ -1,0 +1,19 @@
+services:
+
+  rust-extism-workspace:
+    build:
+      context: .
+      platforms:
+        #- "linux/amd64"
+        - "linux/arm64"
+      dockerfile: Dockerfile
+      args:
+        - EXTISM_VERSION=1.6.2      # Extism CLI
+        - RUST_VERSION=stable
+        - NODE_MAJOR=22
+        - USER_NAME=${USER}
+    #network_mode: "host"   
+    volumes:
+      - ../..:/workspaces:cached      
+    command: sleep infinity
+
